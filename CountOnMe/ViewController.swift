@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
+
+    let calculator = Calculator()
     
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
@@ -18,6 +20,7 @@ class ViewController: UIViewController {
     
     // Error check computed variables
     var expressionIsCorrect: Bool {
+        #warning("ajouter tous les opérateur (/, *)")
         return elements.last != "+" && elements.last != "-"
     }
     
@@ -26,6 +29,7 @@ class ViewController: UIViewController {
     }
     
     var canAddOperator: Bool {
+        #warning("ajouter tous les opérateur (/, *) ou retirer une des propriétés calculées")
         return elements.last != "+" && elements.last != "-"
     }
     
@@ -37,6 +41,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        textView.isEditable = false
+        textView.isSelectable = false
     }
     
     
@@ -45,22 +51,23 @@ class ViewController: UIViewController {
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        
+
         if expressionHaveResult {
             textView.text = ""
         }
-        
+
         textView.text.append(numberText)
     }
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if canAddOperator {
-            textView.text.append(" + ")
-        } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
-        }
+//        if canAddOperator {
+//            textView.text.append(" + ")
+//        } else {
+//            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+//            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//            self.present(alertVC, animated: true, completion: nil)
+//        }
+        calculator.add()
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
@@ -74,6 +81,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
+        guard !expressionHaveResult else {
+            return
+        }
+
         guard expressionIsCorrect else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -111,3 +122,29 @@ class ViewController: UIViewController {
 
 }
 
+
+class Calculator {
+    private var elements: [String] = []
+
+    // Error check computed variables
+    private var expressionIsCorrect: Bool {
+        #warning("ajouter tous les opérateur (/, *)")
+        return elements.last != "+" && elements.last != "-"
+    }
+
+    private var expressionHaveEnoughElement: Bool {
+        return elements.count >= 3
+    }
+
+    private var canAddOperator: Bool {
+        #warning("ajouter tous les opérateur (/, *) ou retirer une des propriétés calculées")
+        return elements.last != "+" && elements.last != "-"
+    }
+
+    func add() {
+        guard canAddOperator else {
+            return
+        }
+        elements.append("+")
+    }
+}
