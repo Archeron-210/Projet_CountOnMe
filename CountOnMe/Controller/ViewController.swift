@@ -35,10 +35,9 @@ class ViewController: UIViewController {
         return textView.text.firstIndex(of: "=") != nil
     }
     
-    // View Life cycles
+    // View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         textView.isEditable = false
         textView.isSelectable = false
     }
@@ -69,13 +68,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if canAddOperator {
-            textView.text.append(" - ")
-        } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+        guard expressionIsCorrect else {
+            incorrectExpressionAlert()
+            return
         }
+        textView.text.append(" - ")
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
@@ -84,15 +81,13 @@ class ViewController: UIViewController {
         }
 
         guard expressionIsCorrect else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+            incorrectExpressionAlert()
+            return
         }
         
         guard expressionHaveEnoughElement else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+            notEnoughElementAlert()
+            return
         }
         
         // Create local copy of operations
@@ -118,25 +113,19 @@ class ViewController: UIViewController {
         textView.text.append(" = \(operationsToReduce.first!)")
     }
 
+    //MARK:- Alerts
+
+    private func incorrectExpressionAlert() {
+        let alertVC = UIAlertController(title: "Erreur!", message: "Entrez une expression correcte !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+
+    private func notEnoughElementAlert() {
+        let alertVC = UIAlertController(title: "Erreur!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+
 }
 
-
-class Calculator {
-    private var elements: [String] = []
-
-    // Error check computed variables
-    private var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
-    }
-
-    private var expressionHaveEnoughElement: Bool {
-        return elements.count >= 3
-    }
-
-    func add() {
-        guard expressionIsCorrect else {
-            return
-        }
-        elements.append("+")
-    }
-}

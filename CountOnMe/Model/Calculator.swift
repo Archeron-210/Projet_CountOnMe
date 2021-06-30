@@ -7,3 +7,22 @@
 //
 
 import Foundation
+class Calculator {
+    private var elements: [String] = []
+
+    // Error check computed variables
+    private var expressionIsCorrect: Bool {
+        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
+    }
+
+    private var expressionHaveEnoughElement: Bool {
+        return elements.count >= 3
+    }
+
+    func add() {
+        guard expressionIsCorrect else {
+            return
+        }
+        elements.append(" + ")
+    }
+}
