@@ -20,17 +20,15 @@ class ViewController: UIViewController {
     
     // Error check computed variables
     var expressionIsCorrect: Bool {
-        #warning("ajouter tous les opérateur (/, *)")
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
     }
     
     var expressionHaveEnoughElement: Bool {
         return elements.count >= 3
     }
-    
+
     var canAddOperator: Bool {
-        #warning("ajouter tous les opérateur (/, *) ou retirer une des propriétés calculées")
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
     }
     
     var expressionHaveResult: Bool {
@@ -128,21 +126,15 @@ class Calculator {
 
     // Error check computed variables
     private var expressionIsCorrect: Bool {
-        #warning("ajouter tous les opérateur (/, *)")
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
     }
 
     private var expressionHaveEnoughElement: Bool {
         return elements.count >= 3
     }
 
-    private var canAddOperator: Bool {
-        #warning("ajouter tous les opérateur (/, *) ou retirer une des propriétés calculées")
-        return elements.last != "+" && elements.last != "-"
-    }
-
     func add() {
-        guard canAddOperator else {
+        guard expressionIsCorrect else {
             return
         }
         elements.append("+")
