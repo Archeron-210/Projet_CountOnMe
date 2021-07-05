@@ -14,36 +14,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
-    var elements: [String] {
-        return textView.text.split(separator: " ").map { "\($0)" }
-    }
-    
-    // Error check computed variables
-    var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-"
-    }
-    
-    var expressionHaveEnoughElement: Bool {
-        return elements.count >= 3
-    }
-    
-    var expressionHaveResult: Bool {
-        return textView.text.firstIndex(of: "=") != nil
-    }
-    
     // View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.isEditable = false
         textView.isSelectable = false
+        textView.isScrollEnabled = true
+        // Notification :
+        let name = Notification.Name("ExpressionDidChange")
+        NotificationCenter.default.addObserver(self, selector: #selector(displayCalculus), name: name, object: nil)
     }
     
     
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         calculator.addNumber(sender.tag)
-        // A retirer quand on ajoute la notif
-        textView.text = calculator.currentExpression
     }
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
@@ -54,8 +39,6 @@ class ViewController: UIViewController {
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alertVC, animated: true, completion: nil)
         }
-        // A retirer quand on ajoute la notif
-        textView.text = calculator.currentExpression
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
@@ -66,19 +49,19 @@ class ViewController: UIViewController {
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alertVC, animated: true, completion: nil)
         }
-        // A retirer quand on ajoute la notif
-        textView.text = calculator.currentExpression
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         let success = calculator.computeExpression()
 
-        if success {
-            textView.text = calculator.currentExpression
-        } else {
+        if !success {
             let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             return self.present(alertVC, animated: true, completion: nil)
         }
+    }
+
+    @objc func displayCalculus() {
+        textView.text = calculator.currentExpression
     }
 }

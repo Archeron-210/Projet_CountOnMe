@@ -7,19 +7,24 @@
 //
 
 import Foundation
+
 class Calculator {
-    private(set) var currentExpression: String = ""
-
-    var expressionHaveResult: Bool {
-        return elements.contains("=")
-    }
-
-    var expressionHaveEnoughElement: Bool {
-        return elements.count >= 3
+    private(set) var currentExpression: String = "" {
+        didSet {
+            sendCurrentExpressionDidChangeNotification()
+        }
     }
 
     private var elements: [String] {
         return currentExpression.split(separator: " ").map { "\($0)" }
+    }
+
+    private var expressionHaveResult: Bool {
+        return elements.contains("=")
+    }
+
+    private var expressionHaveEnoughElement: Bool {
+        return elements.count >= 3
     }
 
     private var expressionIsCorrect: Bool {
@@ -68,23 +73,40 @@ class Calculator {
 
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
-            let left = Int(operationsToReduce[0])!
+            guard let left = Int(operationsToReduce[0]) else {
+                return false
+            }
+
             let operand = operationsToReduce[1]
-            let right = Int(operationsToReduce[2])!
+
+            guard let right = Int(operationsToReduce[2]) else {
+                return false
+            }
 
             let result: Int
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
-            default: fatalError("Unknown operator !")
+            default: return false
             }
 
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
             operationsToReduce.insert("\(result)", at: 0)
         }
 
-        currentExpression.append(" = \(operationsToReduce.first!)")
+        guard let result = operationsToReduce.first else {
+            return false
+        }
+
+        currentExpression.append(" = \(result)")
 
         return true
+    }
+
+    func sendCurrentExpressionDidChangeNotification() {
+        let name = Notification.Name(rawValue: "ExpressionDidChange")
+        let notification = Notification(name: name)
+        NotificationCenter.default.post(notification)
+
     }
 }
