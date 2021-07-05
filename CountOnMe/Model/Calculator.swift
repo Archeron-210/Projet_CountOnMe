@@ -28,7 +28,7 @@ class Calculator {
     }
 
     private var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
     }
 
     func addNumber(_ number: Int) {
@@ -100,6 +100,10 @@ class Calculator {
             let operand = operationsToReduce[1]
 
             guard let right = Int(operationsToReduce[2]) else {
+                return false
+            }
+
+            if operand.elementsEqual("/") && right == 0 {
                 return false
             }
 
