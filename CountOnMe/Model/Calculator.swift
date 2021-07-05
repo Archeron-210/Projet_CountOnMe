@@ -38,6 +38,10 @@ class Calculator {
         currentExpression.append("\(number)")
     }
 
+    func resetExpression() {
+        currentExpression = ""
+    }
+
     func addPlusOperator() -> Bool {
         guard expressionIsCorrect, !expressionHaveResult else {
             return false
@@ -51,6 +55,22 @@ class Calculator {
             return false
         }
         currentExpression.append(" - ")
+        return true
+    }
+
+    func addMultiplyOperator() -> Bool {
+        guard expressionIsCorrect, !expressionHaveResult else {
+            return false
+        }
+        currentExpression.append(" x ")
+        return true
+    }
+
+    func addDivideOperator() -> Bool {
+        guard expressionIsCorrect, !expressionHaveResult else {
+            return false
+        }
+        currentExpression.append(" / ")
         return true
     }
 
@@ -87,6 +107,8 @@ class Calculator {
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
+            case "x": result = left * right
+            case "/": result = left / right
             default: return false
             }
 

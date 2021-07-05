@@ -260,6 +260,9 @@
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="tappedMultiplyButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="kuy-Tx-lSc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-8W-vRC">
                                         <rect key="frame" x="175" y="0.0" width="53.5" height="53.5"/>
@@ -271,6 +274,9 @@
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="tappedDivideButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="AC3-fF-rdV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39P-uS-MJD">
                                         <rect key="frame" x="233.5" y="0.0" width="53" height="53.5"/>
@@ -279,6 +285,9 @@
                                         <state key="normal" title="AC">
                                             <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedResetButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="zm8-JN-rUD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-Of-bCU">
                                         <rect key="frame" x="291.5" y="0.0" width="53.5" height="53.5"/>
@@ -375,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XP-3c-sJZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-322"/>
+            <point key="canvasLocation" x="-386" y="-353"/>
         </scene>
     </scenes>
 </document>

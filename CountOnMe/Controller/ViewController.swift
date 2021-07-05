@@ -11,10 +11,13 @@ import UIKit
 class ViewController: UIViewController {
     let calculator = Calculator()
 
+    //MARK:- Outlets
+
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
-    // View Life cycles
+    //MARK:- View Lifecycles
+
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.isEditable = false
@@ -26,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     
-    // View actions
+    //MARK:- Actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         calculator.addNumber(sender.tag)
     }
@@ -35,9 +38,7 @@ class ViewController: UIViewController {
         let success = calculator.addPlusOperator()
 
         if !success {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+           incorrectOperatorAlert()
         }
     }
     
@@ -45,9 +46,24 @@ class ViewController: UIViewController {
         let success = calculator.addMinusOperator()
 
         if !success {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            incorrectOperatorAlert()
+        }
+    }
+
+    @IBAction func tappedMultiplyButton(_ sender: UIButton) {
+        let success = calculator.addMultiplyOperator()
+
+        if !success {
+            incorrectOperatorAlert()
+        }
+    }
+
+
+    @IBAction func tappedDivideButton(_ sender: UIButton) {
+        let success = calculator.addDivideOperator()
+
+        if !success {
+            incorrectOperatorAlert()
         }
     }
 
@@ -55,13 +71,31 @@ class ViewController: UIViewController {
         let success = calculator.computeExpression()
 
         if !success {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+            incorrectExpressionAlert()
         }
     }
 
-    @objc func displayCalculus() {
+    @IBAction func tappedResetButton(_ sender: UIButton) {
+        calculator.resetExpression()
+    }
+
+    //MARK:- Private Functions
+
+    @objc private func displayCalculus() {
         textView.text = calculator.currentExpression
+    }
+
+    // MARK:- Alerts
+
+    private func incorrectExpressionAlert() {
+        let alertVC = UIAlertController(title: "Erreur !", message: "Entrez une expression correcte !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return self.present(alertVC, animated: true, completion: nil)
+    }
+
+    private func incorrectOperatorAlert() {
+        let alertVC = UIAlertController(title: "Erreur !", message: "Un opérateur est déja mis ou incorrect !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
 }
