@@ -18,6 +18,36 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
 
+    // MARK: - Expression Tests
+
+    func testGivenExpressionIsNotEmpty_WhenResetting_ThenExpressionIsEmpty() {
+        calculator.addNumber(3)
+        _ = calculator.addMinusOperator()
+
+        calculator.resetExpression()
+
+        XCTAssertEqual(calculator.currentExpression, "")
+    }
+
+    func testGivenExpressionHasOnlyTwoElements_WhenComputingExpression_ThenComputingIsNotPossible() {
+        calculator.addNumber(3)
+        _ = calculator.addPlusOperator()
+
+        let result = calculator.computeExpression()
+
+        XCTAssertFalse(result)
+    }
+
+    func testGivenExpressionHasNumbersAndOperatorAndIsNotComputed_WhenAddingOperator_ThenAddingOperatorIsPossible() {
+        calculator.addNumber(2)
+        _ = calculator.addPlusOperator()
+        calculator.addNumber(8)
+
+        let operatorAdded = calculator.addMinusOperator()
+
+        XCTAssertTrue(operatorAdded)
+    }
+
     // MARK: - Adding Numbers Tests
 
     func testGivenExpressionIsEmpty_WhenAddingANumber_ThenNumberIsAddedToCurrentExpression() {
@@ -37,7 +67,7 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.currentExpression, "3")
     }
 
-    // MARK: - Plus Sign Tests
+    // MARK: - Additions Tests
 
     func testGivenExpressionHasOneNumber_WhenAddingPlusSign_ThenAddingPlusSignIsPossibleAndExpressionIsTheNumberAndPlusSign() {
         calculator.addNumber(1)
@@ -67,7 +97,7 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.currentExpression, "2 + 2 = 4")
     }
 
-// MARK: - Minus Sign Tests
+// MARK: - Substractions Tests
 
     func testGivenExpressionHasOneNumber_WhenAddingMinusSign_ThenAddingMinusSignIsPossibleAndExpressionIsTheNumberAndMinusSign() {
         calculator.addNumber(1)
@@ -97,6 +127,74 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.currentExpression, "5 - 2 = 3")
     }
 
+    // MARK: - Multiplications Test
 
-    // Given expression = "1 + 1 = 2", when on appuie sur AC, then expression = ""
+    func testGivenExpressionHasOneNumber_WhenAddingMultiplySign_ThenAddingMultiplySignIsPossibleAndExpressionIsTheNumberAndMultiplySign() {
+        calculator.addNumber(1)
+
+        let operatorAdded = calculator.addMultiplyOperator()
+
+        XCTAssertTrue(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "1 x ")
+    }
+
+    func testGivenExpressionIsEmpty_WhenAddingMultiplySign_ThenAddingMultiplySignIsNotPossibleAndExpressionIsEmpty() {
+        let operatorAdded = calculator.addMultiplyOperator()
+
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "")
+    }
+
+    func testGivenExpressionHasAResult_WhenAddingMultiplySign_ThenAddingMultiplySignIsNotPossibleAndExpressionIsTheSame() {
+        calculator.addNumber(5)
+        _ = calculator.addMultiplyOperator()
+        calculator.addNumber(2)
+        _ = calculator.computeExpression()
+
+        let operatorAdded = calculator.addMultiplyOperator()
+
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "5 x 2 = 10")
+    }
+
+    // MARK: - Divisions Tests
+
+    func testGivenExpressionHasOneNumber_WhenAddingDivideSign_ThenAddingDivideSignIsPossibleAndExpressionIsTheNumberAndDivideSign() {
+        calculator.addNumber(1)
+
+        let operatorAdded = calculator.addDivideOperator()
+
+        XCTAssertTrue(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "1 / ")
+    }
+
+    func testGivenExpressionIsEmpty_WhenAddingDivideSign_ThenAddingDivideSignIsNotPossibleAndExpressionIsEmpty() {
+        let operatorAdded = calculator.addDivideOperator()
+
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "")
+    }
+
+    func testGivenExpressionHasAResult_WhenAddingDivideSign_ThenAddingDivideSignIsNotPossibleAndExpressionIsTheSame() {
+        calculator.addNumber(10)
+        _ = calculator.addDivideOperator()
+        calculator.addNumber(2)
+        _ = calculator.computeExpression()
+
+        let operatorAdded = calculator.addDivideOperator()
+
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "10 / 2 = 5")
+    }
+
+    func testGivenExpressionIsADivision_WhenDividingByZero_ThenComputingIsNotPossible() {
+        calculator.addNumber(10)
+        _ = calculator.addDivideOperator()
+        calculator.addNumber(0)
+
+        let result = calculator.computeExpression()
+
+        XCTAssertFalse(result)
+    }
+
 }
