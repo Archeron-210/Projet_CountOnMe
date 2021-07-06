@@ -33,10 +33,23 @@ class CalculatorTestCase: XCTestCase {
 
         XCTAssertEqual(calculator.currentExpression, "3")
     }
+    func testGivenExpressionHasOneNumber_WhenAddingPlusSign_ThenAddingPlusSignIsPossibleAndExpressionIsTheNumberAndPlusSign() {
+        calculator.addNumber(1)
 
+        let result = calculator.addPlusOperator()
 
-    // Given expression = "1", when on appuie sur plus, then expression = "1 + " et plus renvoie true
-    // Given expression = "", when on appuie sur plus, then expression = "" et plus renvoie false
+        XCTAssertTrue(result)
+        XCTAssertEqual(calculator.currentExpression, "1 + ")
+
+    }
+
+    func testGivenExpressionIsEmpty_WhenAddingPlusSign_ThenAddingPlusSignIsNotPossibleAndExpressionIsEmpty() {
+        let result = calculator.addPlusOperator()
+
+        XCTAssertFalse(result)
+        XCTAssertEqual(calculator.currentExpression, "")
+    }
+
     // Given expression = "1 + 1 = 2", when on appuie sur plus, then expression =  "1 + 1 = 2" et plus renvoie false
 
 

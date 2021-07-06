@@ -27,6 +27,10 @@ class Calculator {
         return elements.count >= 3
     }
 
+    private var expressionHaveAtLeastOneNumber: Bool {
+        return elements.count >= 1 && Int(elements.first ?? "") != nil
+    }
+
     private var expressionIsCorrect: Bool {
         return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
     }
@@ -43,7 +47,7 @@ class Calculator {
     }
 
     func addPlusOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult else {
+        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
             return false
         }
         currentExpression.append(" + ")
@@ -51,7 +55,7 @@ class Calculator {
     }
 
     func addMinusOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult else {
+        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
             return false
         }
         currentExpression.append(" - ")
@@ -59,7 +63,7 @@ class Calculator {
     }
 
     func addMultiplyOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult else {
+        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
             return false
         }
         currentExpression.append(" x ")
@@ -67,7 +71,7 @@ class Calculator {
     }
 
     func addDivideOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult else {
+        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
             return false
         }
         currentExpression.append(" / ")
