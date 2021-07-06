@@ -18,8 +18,11 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
 
+    // MARK: - Adding Numbers Tests
+
     func testGivenExpressionIsEmpty_WhenAddingANumber_ThenNumberIsAddedToCurrentExpression() {
         calculator.addNumber(3)
+
         XCTAssertEqual(calculator.currentExpression, "3")
     }
 
@@ -33,6 +36,9 @@ class CalculatorTestCase: XCTestCase {
 
         XCTAssertEqual(calculator.currentExpression, "3")
     }
+
+    // MARK: - Plus Sign Tests
+
     func testGivenExpressionHasOneNumber_WhenAddingPlusSign_ThenAddingPlusSignIsPossibleAndExpressionIsTheNumberAndPlusSign() {
         calculator.addNumber(1)
 
@@ -40,20 +46,57 @@ class CalculatorTestCase: XCTestCase {
 
         XCTAssertTrue(result)
         XCTAssertEqual(calculator.currentExpression, "1 + ")
-
     }
 
     func testGivenExpressionIsEmpty_WhenAddingPlusSign_ThenAddingPlusSignIsNotPossibleAndExpressionIsEmpty() {
-        let result = calculator.addPlusOperator()
+        let operatorAdded = calculator.addPlusOperator()
 
-        XCTAssertFalse(result)
+        XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "")
     }
 
-    // Given expression = "1 + 1 = 2", when on appuie sur plus, then expression =  "1 + 1 = 2" et plus renvoie false
+    func testGivenExpressionHasAResult_WhenAddingPlusSign_ThenAddingPlusSignIsNotPossibleAndExpressionIsTheSame() {
+        calculator.addNumber(2)
+        _ = calculator.addPlusOperator()
+        calculator.addNumber(2)
+        _ = calculator.computeExpression()
 
+        let operatorAdded = calculator.addPlusOperator()
 
-    // Pareil pour moins
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "2 + 2 = 4")
+    }
+
+// MARK: - Minus Sign Tests
+
+    func testGivenExpressionHasOneNumber_WhenAddingMinusSign_ThenAddingMinusSignIsPossibleAndExpressionIsTheNumberAndMinusSign() {
+        calculator.addNumber(1)
+
+        let operatorAdded = calculator.addMinusOperator()
+
+        XCTAssertTrue(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "1 - ")
+    }
+
+    func testGivenExpressionIsEmpty_WhenAddingMinusSign_ThenAddingMinusSignIsNotPossibleAndExpressionIsEmpty() {
+        let operatorAdded = calculator.addMinusOperator()
+
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "")
+    }
+
+    func testGivenExpressionHasAResult_WhenAddingMinusSign_ThenAddingMinusSignIsNotPossibleAndExpressionIsTheSame() {
+        calculator.addNumber(5)
+        _ = calculator.addMinusOperator()
+        calculator.addNumber(2)
+        _ = calculator.computeExpression()
+
+        let operatorAdded = calculator.addMinusOperator()
+
+        XCTAssertFalse(operatorAdded)
+        XCTAssertEqual(calculator.currentExpression, "5 - 2 = 3")
+    }
+
 
     // Given expression = "1 + 1 = 2", when on appuie sur AC, then expression = ""
 }
