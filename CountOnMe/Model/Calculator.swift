@@ -97,13 +97,13 @@ class Calculator {
 
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
-            guard let left = Int(operationsToReduce[0]) else {
+            guard let left = Double(operationsToReduce[0]) else {
                 return false
             }
 
             let operand = operationsToReduce[1]
 
-            guard let right = Int(operationsToReduce[2]) else {
+            guard let right = Double(operationsToReduce[2]) else {
                 return false
             }
 
@@ -111,7 +111,7 @@ class Calculator {
                 return false
             }
 
-            let result: Int
+            let result: Double
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
@@ -120,8 +120,11 @@ class Calculator {
             default: return false
             }
 
+            // rounded result to avoid displaying too many numbers :
+            let resultToDisplay = (result * 100).rounded() / 100
+
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
-            operationsToReduce.insert("\(result)", at: 0)
+            operationsToReduce.insert("\(resultToDisplay)", at: 0)
         }
 
         guard let result = operationsToReduce.first else {

@@ -48,6 +48,27 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertTrue(operatorAdded)
     }
 
+    func testGivenExpressionHasAlreadyAResult_WhenComputing_ThenComputingIsPossibleAndResultIsTheSame() {
+        calculator.addNumber(5)
+        _ = calculator.addMultiplyOperator()
+        calculator.addNumber(2)
+        _ = calculator.computeExpression()
+
+        let result = calculator.computeExpression()
+
+        XCTAssertTrue(result)
+        XCTAssertEqual(calculator.currentExpression, "5 x 2 = 10.0")
+    }
+
+    func testGivenExpressionEndsWithAnOperator_WhenComputing_ThenComputingIsNotPossible() {
+        calculator.addNumber(7)
+        _ = calculator.addPlusOperator()
+
+        let result = calculator.computeExpression()
+
+        XCTAssertFalse(result)
+    }
+
     // MARK: - Adding Numbers Tests
 
     func testGivenExpressionIsEmpty_WhenAddingANumber_ThenNumberIsAddedToCurrentExpression() {
@@ -94,7 +115,7 @@ class CalculatorTestCase: XCTestCase {
         let operatorAdded = calculator.addPlusOperator()
 
         XCTAssertFalse(operatorAdded)
-        XCTAssertEqual(calculator.currentExpression, "2 + 2 = 4")
+        XCTAssertEqual(calculator.currentExpression, "2 + 2 = 4.0")
     }
 
 // MARK: - Substractions Tests
@@ -124,7 +145,7 @@ class CalculatorTestCase: XCTestCase {
         let operatorAdded = calculator.addMinusOperator()
 
         XCTAssertFalse(operatorAdded)
-        XCTAssertEqual(calculator.currentExpression, "5 - 2 = 3")
+        XCTAssertEqual(calculator.currentExpression, "5 - 2 = 3.0")
     }
 
     // MARK: - Multiplications Test
@@ -154,7 +175,7 @@ class CalculatorTestCase: XCTestCase {
         let operatorAdded = calculator.addMultiplyOperator()
 
         XCTAssertFalse(operatorAdded)
-        XCTAssertEqual(calculator.currentExpression, "5 x 2 = 10")
+        XCTAssertEqual(calculator.currentExpression, "5 x 2 = 10.0")
     }
 
     // MARK: - Divisions Tests
@@ -184,7 +205,7 @@ class CalculatorTestCase: XCTestCase {
         let operatorAdded = calculator.addDivideOperator()
 
         XCTAssertFalse(operatorAdded)
-        XCTAssertEqual(calculator.currentExpression, "10 / 2 = 5")
+        XCTAssertEqual(calculator.currentExpression, "10 / 2 = 5.0")
     }
 
     func testGivenExpressionIsADivision_WhenDividingByZero_ThenComputingIsNotPossible() {
