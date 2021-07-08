@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        let success = calculator.addPlusOperator()
+        let success = calculator.addOperator(operand: "+")
 
         if !success {
            incorrectOperatorAlert()
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        let success = calculator.addMinusOperator()
+        let success = calculator.addOperator(operand: "-")
 
         if !success {
             incorrectOperatorAlert()
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tappedMultiplyButton(_ sender: UIButton) {
-        let success = calculator.addMultiplyOperator()
+        let success = calculator.addOperator(operand: "x")
 
         if !success {
             incorrectOperatorAlert()
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func tappedDivideButton(_ sender: UIButton) {
-        let success = calculator.addDivideOperator()
+        let success = calculator.addOperator(operand: "/")
 
         if !success {
             incorrectOperatorAlert()

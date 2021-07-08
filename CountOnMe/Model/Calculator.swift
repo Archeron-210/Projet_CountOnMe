@@ -51,36 +51,26 @@ class Calculator {
         currentExpression = ""
     }
 
-    func addPlusOperator() -> Bool {
+    func addOperator(operand: Character) -> Bool {
         guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
             return false
         }
-        currentExpression.append(" + ")
-        return true
-    }
-
-    func addMinusOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
+        switch operand {
+        case "+":
+            currentExpression.append(" + ")
+            return true
+        case "-":
+            currentExpression.append(" - ")
+            return true
+        case "x":
+            currentExpression.append(" x ")
+            return true
+        case "/":
+            currentExpression.append(" / ")
+            return true
+        default:
             return false
         }
-        currentExpression.append(" - ")
-        return true
-    }
-
-    func addMultiplyOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
-            return false
-        }
-        currentExpression.append(" x ")
-        return true
-    }
-
-    func addDivideOperator() -> Bool {
-        guard expressionIsCorrect, !expressionHaveResult, expressionHaveAtLeastOneNumber else {
-            return false
-        }
-        currentExpression.append(" / ")
-        return true
     }
 
     func computeExpression() -> Bool {
@@ -112,6 +102,7 @@ class Calculator {
         return true
     }
 
+    // reduce basic additions and substractions :
     private func reduceBasicOperations(_ elements: [String]) -> [String]? {
         // Create local copy of operations :
         var localElements = elements
@@ -145,29 +136,40 @@ class Calculator {
         return localElements
     }
 
-    func reducePriorityOperations(elements: [String]) -> [String]? {
+    // reduce operations wich contains multiplications or divisions :
+    private func reducePriorityOperations(elements: [String]) -> [String]? {
+        // local copy of operations :
         var localElements = elements
+
+        // Iterate over operations while there is a multiplication or division :
         while localElements.contains("x") || localElements.contains("/") {
+            // check at what index we have a "x" or a "/" :
             guard let index = localElements.firstIndex(where: { $0 == "x" || $0 == "/" }) else {
                 return nil
             }
+
             guard let left = Double(localElements[index-1]) else {
                 return nil
             }
+
             guard let right = Double(localElements[index+1]) else {
                 return nil
             }
+
             let operand = localElements[index]
+
             // Division by 0 :
             if operand == "/" && right == 0 {
                 return nil
             }
+
             let result: Double
             switch operand {
                 case "x": result = left * right
                 case "/": result = left / right
                 default : return nil
             }
+
             for _ in 1...3 {
                 // Remove the 3 elements at the lowest index
                 localElements.remove(at: index-1)
