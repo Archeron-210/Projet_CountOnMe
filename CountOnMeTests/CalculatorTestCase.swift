@@ -29,6 +29,14 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.currentExpression, "")
     }
 
+    func testGivenExpressionHasANumber_WhenAddingWrongOperator_ThenItIsNotPossible() {
+        calculator.addNumber(5)
+
+        let operatorAdded = calculator.addOperator(operand: "y")
+
+        XCTAssertFalse(operatorAdded)
+    }
+
     func testGivenExpressionHasOnlyTwoElements_WhenComputingExpression_ThenComputingIsNotPossible() {
         calculator.addNumber(3)
         _ = calculator.addOperator(operand: "+")
@@ -62,6 +70,8 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionEndsWithAnOperator_WhenComputing_ThenComputingIsNotPossible() {
         calculator.addNumber(7)
+        _ = calculator.addOperator(operand: "+")
+        calculator.addNumber(3)
         _ = calculator.addOperator(operand: "+")
 
         let result = calculator.computeExpression()
@@ -216,6 +226,26 @@ class CalculatorTestCase: XCTestCase {
         let result = calculator.computeExpression()
 
         XCTAssertFalse(result)
+    }
+
+    // MARK: - Priorities
+
+    func testGivenExpressionHasAllTypesOfOperators_WhenComputing_ThenResultIsCorrectWithOperationPriorities() {
+        calculator.addNumber(10)
+        _ = calculator.addOperator(operand: "/")
+        calculator.addNumber(2)
+        _ = calculator.addOperator(operand: "+")
+        calculator.addNumber(5)
+        _ = calculator.addOperator(operand: "x")
+        calculator.addNumber(2)
+        _ = calculator.addOperator(operand: "-")
+        calculator.addNumber(2)
+
+        _ = calculator.computeExpression()
+
+        XCTAssertEqual(calculator.currentExpression, "10 / 2 + 5 x 2 - 2 = 13.0")
+        XCTAssertNotEqual(calculator.currentExpression, "10 / 2 + 5 x 2 - 2 = 18.0")
+
     }
 
 }
