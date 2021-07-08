@@ -84,7 +84,7 @@ class Calculator {
         guard expressionIsCorrect else {
             return false
         }
-
+        // check for operations priorities, with updated elements array returned :
         guard let reducedPriority = reducePriorityOperations(elements: elements) else {
             return false
         }

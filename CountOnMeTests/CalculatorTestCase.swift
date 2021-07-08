@@ -22,7 +22,7 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionIsNotEmpty_WhenResetting_ThenExpressionIsEmpty() {
         calculator.addNumber(3)
-        _ = calculator.addMinusOperator()
+        _ = calculator.addOperator(operand: "-")
 
         calculator.resetExpression()
 
@@ -31,7 +31,7 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasOnlyTwoElements_WhenComputingExpression_ThenComputingIsNotPossible() {
         calculator.addNumber(3)
-        _ = calculator.addPlusOperator()
+        _ = calculator.addOperator(operand: "+")
 
         let result = calculator.computeExpression()
 
@@ -40,17 +40,17 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasNumbersAndOperatorAndIsNotComputed_WhenAddingOperator_ThenAddingOperatorIsPossible() {
         calculator.addNumber(2)
-        _ = calculator.addPlusOperator()
+        _ = calculator.addOperator(operand: "+")
         calculator.addNumber(8)
 
-        let operatorAdded = calculator.addMinusOperator()
+        let operatorAdded = calculator.addOperator(operand: "-")
 
         XCTAssertTrue(operatorAdded)
     }
 
     func testGivenExpressionHasAlreadyAResult_WhenComputing_ThenComputingIsPossibleAndResultIsTheSame() {
         calculator.addNumber(5)
-        _ = calculator.addMultiplyOperator()
+        _ = calculator.addOperator(operand: "x")
         calculator.addNumber(2)
         _ = calculator.computeExpression()
 
@@ -62,7 +62,7 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionEndsWithAnOperator_WhenComputing_ThenComputingIsNotPossible() {
         calculator.addNumber(7)
-        _ = calculator.addPlusOperator()
+        _ = calculator.addOperator(operand: "+")
 
         let result = calculator.computeExpression()
 
@@ -79,7 +79,7 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasResult_WhenAddingANumber_ThenCurrentExpressionEqualsToNumberAdded() {
         calculator.addNumber(3)
-        _ = calculator.addMinusOperator()
+        _ = calculator.addOperator(operand: "-")
         calculator.addNumber(1)
         _ = calculator.computeExpression()
 
@@ -93,14 +93,14 @@ class CalculatorTestCase: XCTestCase {
     func testGivenExpressionHasOneNumber_WhenAddingPlusSign_ThenAddingPlusSignIsPossibleAndExpressionIsTheNumberAndPlusSign() {
         calculator.addNumber(1)
 
-        let result = calculator.addPlusOperator()
+        let result = calculator.addOperator(operand: "+")
 
         XCTAssertTrue(result)
         XCTAssertEqual(calculator.currentExpression, "1 + ")
     }
 
     func testGivenExpressionIsEmpty_WhenAddingPlusSign_ThenAddingPlusSignIsNotPossibleAndExpressionIsEmpty() {
-        let operatorAdded = calculator.addPlusOperator()
+        let operatorAdded = calculator.addOperator(operand: "+")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "")
@@ -108,11 +108,11 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasAResult_WhenAddingPlusSign_ThenAddingPlusSignIsNotPossibleAndExpressionIsTheSame() {
         calculator.addNumber(2)
-        _ = calculator.addPlusOperator()
+        _ = calculator.addOperator(operand: "+")
         calculator.addNumber(2)
         _ = calculator.computeExpression()
 
-        let operatorAdded = calculator.addPlusOperator()
+        let operatorAdded = calculator.addOperator(operand: "+")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "2 + 2 = 4.0")
@@ -123,14 +123,14 @@ class CalculatorTestCase: XCTestCase {
     func testGivenExpressionHasOneNumber_WhenAddingMinusSign_ThenAddingMinusSignIsPossibleAndExpressionIsTheNumberAndMinusSign() {
         calculator.addNumber(1)
 
-        let operatorAdded = calculator.addMinusOperator()
+        let operatorAdded = calculator.addOperator(operand: "-")
 
         XCTAssertTrue(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "1 - ")
     }
 
     func testGivenExpressionIsEmpty_WhenAddingMinusSign_ThenAddingMinusSignIsNotPossibleAndExpressionIsEmpty() {
-        let operatorAdded = calculator.addMinusOperator()
+        let operatorAdded = calculator.addOperator(operand: "-")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "")
@@ -138,11 +138,11 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasAResult_WhenAddingMinusSign_ThenAddingMinusSignIsNotPossibleAndExpressionIsTheSame() {
         calculator.addNumber(5)
-        _ = calculator.addMinusOperator()
+        _ = calculator.addOperator(operand: "-")
         calculator.addNumber(2)
         _ = calculator.computeExpression()
 
-        let operatorAdded = calculator.addMinusOperator()
+        let operatorAdded = calculator.addOperator(operand: "-")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "5 - 2 = 3.0")
@@ -153,14 +153,14 @@ class CalculatorTestCase: XCTestCase {
     func testGivenExpressionHasOneNumber_WhenAddingMultiplySign_ThenAddingMultiplySignIsPossibleAndExpressionIsTheNumberAndMultiplySign() {
         calculator.addNumber(1)
 
-        let operatorAdded = calculator.addMultiplyOperator()
+        let operatorAdded = calculator.addOperator(operand: "x")
 
         XCTAssertTrue(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "1 x ")
     }
 
     func testGivenExpressionIsEmpty_WhenAddingMultiplySign_ThenAddingMultiplySignIsNotPossibleAndExpressionIsEmpty() {
-        let operatorAdded = calculator.addMultiplyOperator()
+        let operatorAdded = calculator.addOperator(operand: "x")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "")
@@ -168,11 +168,11 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasAResult_WhenAddingMultiplySign_ThenAddingMultiplySignIsNotPossibleAndExpressionIsTheSame() {
         calculator.addNumber(5)
-        _ = calculator.addMultiplyOperator()
+        _ = calculator.addOperator(operand: "x")
         calculator.addNumber(2)
         _ = calculator.computeExpression()
 
-        let operatorAdded = calculator.addMultiplyOperator()
+        let operatorAdded = calculator.addOperator(operand: "x")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "5 x 2 = 10.0")
@@ -183,14 +183,14 @@ class CalculatorTestCase: XCTestCase {
     func testGivenExpressionHasOneNumber_WhenAddingDivideSign_ThenAddingDivideSignIsPossibleAndExpressionIsTheNumberAndDivideSign() {
         calculator.addNumber(1)
 
-        let operatorAdded = calculator.addDivideOperator()
+        let operatorAdded = calculator.addOperator(operand: "/")
 
         XCTAssertTrue(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "1 / ")
     }
 
     func testGivenExpressionIsEmpty_WhenAddingDivideSign_ThenAddingDivideSignIsNotPossibleAndExpressionIsEmpty() {
-        let operatorAdded = calculator.addDivideOperator()
+        let operatorAdded = calculator.addOperator(operand: "/")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "")
@@ -198,11 +198,11 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionHasAResult_WhenAddingDivideSign_ThenAddingDivideSignIsNotPossibleAndExpressionIsTheSame() {
         calculator.addNumber(10)
-        _ = calculator.addDivideOperator()
+        _ = calculator.addOperator(operand: "/")
         calculator.addNumber(2)
         _ = calculator.computeExpression()
 
-        let operatorAdded = calculator.addDivideOperator()
+        let operatorAdded = calculator.addOperator(operand: "/")
 
         XCTAssertFalse(operatorAdded)
         XCTAssertEqual(calculator.currentExpression, "10 / 2 = 5.0")
@@ -210,7 +210,7 @@ class CalculatorTestCase: XCTestCase {
 
     func testGivenExpressionIsADivision_WhenDividingByZero_ThenComputingIsNotPossible() {
         calculator.addNumber(10)
-        _ = calculator.addDivideOperator()
+        _ = calculator.addOperator(operand: "/")
         calculator.addNumber(0)
 
         let result = calculator.computeExpression()
