@@ -18,7 +18,7 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
 
-    // MARK: - Expression Tests
+    // MARK: - Expression & Computing Tests
 
     func testGivenExpressionIsNotEmpty_WhenResetting_ThenExpressionIsEmpty() {
         calculator.addNumber(3)
@@ -35,6 +35,21 @@ class CalculatorTestCase: XCTestCase {
         let operatorAdded = calculator.addOperator(operand: "y")
 
         XCTAssertFalse(operatorAdded)
+    }
+
+    func testGivenExpressionHasANumber_WhenAddingAPointToMakeItDecimal_ThenItIsPossibleAdExpressionIsNumberAndPoint() {
+        calculator.addNumber(2)
+
+        let pointAdded = calculator.addPoint()
+
+        XCTAssertTrue(pointAdded)
+        XCTAssertEqual(calculator.currentExpression, "2.")
+    }
+
+    func testGivenExpressionIsEmpty_WhenAddingAPoint_ThenItIsNotPossible() {
+        let pointAdded = calculator.addPoint()
+
+        XCTAssertFalse(pointAdded)
     }
 
     func testGivenExpressionHasOnlyTwoElements_WhenComputingExpression_ThenComputingIsNotPossible() {
