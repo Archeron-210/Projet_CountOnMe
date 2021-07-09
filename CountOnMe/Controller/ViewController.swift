@@ -67,6 +67,14 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func tappedPointButton(_ sender: UIButton) {
+        let success = calculator.addPoint()
+
+        if !success {
+            incorrectExpressionAlert()
+        }
+    }
+
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         let success = calculator.computeExpression()
 
@@ -90,13 +98,13 @@ class ViewController: UIViewController {
     // MARK:- Alerts
 
     private func incorrectExpressionAlert() {
-        let alertVC = UIAlertController(title: "Erreur !", message: "Entrez une expression correcte !", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Erreur !", message: "Entrez une expression correcte", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return self.present(alertVC, animated: true, completion: nil)
     }
 
     private func incorrectOperatorAlert() {
-        let alertVC = UIAlertController(title: "Erreur !", message: "Un opérateur est déja mis ou incorrect !", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Erreur d'opérateur !", message: "Un opérateur est déja mis ou incorrect", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }

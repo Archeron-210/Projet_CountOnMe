@@ -31,7 +31,7 @@ class Calculator {
     }
 
     private var expressionHaveAtLeastOneNumber: Bool {
-        return elements.count >= 1 && Int(elements.first ?? "") != nil
+        return elements.count >= 1 && Double(elements.first ?? "") != nil
     }
 
     private var expressionIsCorrect: Bool {
@@ -49,6 +49,14 @@ class Calculator {
 
     func resetExpression() {
         currentExpression = ""
+    }
+
+    func addPoint() -> Bool {
+        guard expressionHaveAtLeastOneNumber else {
+            return false
+        }
+        currentExpression.append(".")
+        return true
     }
 
     func addOperator(operand: Character) -> Bool {
