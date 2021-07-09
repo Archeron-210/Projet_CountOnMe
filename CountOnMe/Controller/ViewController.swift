@@ -83,6 +83,8 @@ class ViewController: UIViewController {
 
     @objc private func displayCalculus() {
         textView.text = calculator.currentExpression
+        let range = NSMakeRange(textView.text.count - 1, 0)
+        textView.scrollRangeToVisible(range)
     }
 
     // MARK:- Alerts
