@@ -52,6 +52,24 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertFalse(pointAdded)
     }
 
+    func testGivenExpressionHasANumberAndAPoint_WhenAddingOperator_ThenItIsNotPossible() {
+        calculator.addNumber(2)
+        _ = calculator.addPoint()
+
+        let operatorAdded = calculator.addOperator(operand: "+")
+
+        XCTAssertFalse(operatorAdded)
+    }
+
+    func testGivenExpressionHasANumberAndAPoint_WhenComputing_ThenItIsNotPossible() {
+        calculator.addNumber(2)
+        _ = calculator.addPoint()
+
+        let result = calculator.computeExpression()
+
+        XCTAssertFalse(result)
+    }
+
     func testGivenExpressionHasOnlyTwoElements_WhenComputingExpression_ThenComputingIsNotPossible() {
         calculator.addNumber(3)
         _ = calculator.addOperator(operand: "+")
@@ -143,7 +161,7 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.currentExpression, "2 + 2 = 4.0")
     }
 
-// MARK: - Substractions Tests
+    // MARK: - Substractions Tests
 
     func testGivenExpressionHasOneNumber_WhenAddingMinusSign_ThenAddingMinusSignIsPossibleAndExpressionIsTheNumberAndMinusSign() {
         calculator.addNumber(1)

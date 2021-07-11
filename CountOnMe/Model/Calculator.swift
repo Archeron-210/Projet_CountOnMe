@@ -35,7 +35,7 @@ class Calculator {
     }
 
     private var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/"
+        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/" && currentExpression.last != "."
     }
 
     // MARK: - Functions
@@ -52,7 +52,7 @@ class Calculator {
     }
 
     func addPoint() -> Bool {
-        guard expressionHaveAtLeastOneNumber else {
+        guard expressionHaveAtLeastOneNumber && expressionIsCorrect else {
             return false
         }
         currentExpression.append(".")
@@ -103,6 +103,14 @@ class Calculator {
 
         return true
     }
+
+    func sendCurrentExpressionDidChangeNotification() {
+        let name = Notification.Name(rawValue: "ExpressionDidChange")
+        let notification = Notification(name: name)
+        NotificationCenter.default.post(notification)
+    }
+
+    // MARK: - Calculations functions
 
     // reduce operations wich contains multiplications or divisions :
     private func reducePriorityOperations(_ elements: [String]) -> [String]? {
@@ -186,10 +194,4 @@ class Calculator {
         return result
     }
 
-    func sendCurrentExpressionDidChangeNotification() {
-        let name = Notification.Name(rawValue: "ExpressionDidChange")
-        let notification = Notification(name: name)
-        NotificationCenter.default.post(notification)
-
-    }
 }

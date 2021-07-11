@@ -20,8 +20,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.isEditable = false
         textView.isSelectable = false
+        textView.isEditable = false
         textView.isScrollEnabled = true
         // Notification :
         let name = Notification.Name("ExpressionDidChange")
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         let success = calculator.addOperator(operand: "+")
 
         if !success {
-           incorrectOperatorAlert()
+            incorrectExpressionAlert()
         }
     }
     
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         let success = calculator.addOperator(operand: "-")
 
         if !success {
-            incorrectOperatorAlert()
+            incorrectExpressionAlert()
         }
     }
 
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         let success = calculator.addOperator(operand: "x")
 
         if !success {
-            incorrectOperatorAlert()
+            incorrectExpressionAlert()
         }
     }
 
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         let success = calculator.addOperator(operand: "/")
 
         if !success {
-            incorrectOperatorAlert()
+            incorrectExpressionAlert()
         }
     }
 
@@ -95,17 +95,9 @@ class ViewController: UIViewController {
         textView.scrollRangeToVisible(range)
     }
 
-    // MARK:- Alerts
-
     private func incorrectExpressionAlert() {
         let alertVC = UIAlertController(title: "Erreur !", message: "Entrez une expression correcte", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return self.present(alertVC, animated: true, completion: nil)
-    }
-
-    private func incorrectOperatorAlert() {
-        let alertVC = UIAlertController(title: "Erreur d'opérateur !", message: "Un opérateur est déja mis ou incorrect", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
     }
 }
