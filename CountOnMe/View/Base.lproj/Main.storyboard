@@ -290,6 +290,9 @@
                                         <state key="normal" title=".">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                        </variation>
                                         <connections>
                                             <action selector="tappedPointButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="ohS-6B-ZUS"/>
                                         </connections>
@@ -301,6 +304,9 @@
                                         <state key="normal" title="AC">
                                             <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                        </variation>
                                         <connections>
                                             <action selector="tappedResetButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="zm8-JN-rUD"/>
                                         </connections>
