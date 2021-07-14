@@ -1,11 +1,3 @@
-//
-//  CalculatorTestCase.swift
-//  CountOnMeTests
-//
-//  Created by Archeron on 05/07/2021.
-//  Copyright © 2021 Vincent Saluzzo. All rights reserved.
-//
-
 import XCTest
 @testable import CountOnMe
 
@@ -18,7 +10,7 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
 
-    // MARK: - Expression & Computing Tests
+    // MARK: - Reset Test
 
     func testGivenExpressionIsNotEmpty_WhenResetting_ThenExpressionIsEmpty() {
         calculator.addNumber(3)
@@ -29,6 +21,8 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.currentExpression, "")
     }
 
+    // MARK: - Adding Operators Test
+
     func testGivenExpressionHasANumber_WhenAddingWrongOperator_ThenItIsNotPossible() {
         calculator.addNumber(5)
 
@@ -37,7 +31,28 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertFalse(operatorAdded)
     }
 
-    func testGivenExpressionHasANumber_WhenAddingAPointToMakeItDecimal_ThenItIsPossibleAdExpressionIsNumberAndPoint() {
+    func testGivenExpressionHasNumbersAndOperatorAndIsNotComputed_WhenAddingOperator_ThenAddingOperatorIsPossible() {
+        calculator.addNumber(2)
+        _ = calculator.addOperator(operand: "+")
+        calculator.addNumber(8)
+
+        let operatorAdded = calculator.addOperator(operand: "-")
+
+        XCTAssertTrue(operatorAdded)
+    }
+
+    func testGivenExpressionLastByAnOperator_WhenAddingOperator_ThenItIsNotPossible() {
+        calculator.addNumber(2)
+        _ = calculator.addOperator(operand: "+")
+
+        let operatorAdded = calculator.addOperator(operand: "/")
+
+        XCTAssertFalse(operatorAdded)
+    }
+
+    // MARK: - Point Tests
+
+    func testGivenExpressionHasANumber_WhenAddingAPoint_ThenItIsPossibleAdExpressionIsNumberAndPoint() {
         calculator.addNumber(2)
 
         let pointAdded = calculator.addPoint()
@@ -70,7 +85,20 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertFalse(result)
     }
 
-    func testGivenExpressionHasOnlyTwoElements_WhenComputingExpression_ThenComputingIsNotPossible() {
+    func testGivenExpressionHasAlreadyAResult_WhenAddingAPoint_ThenItIsNotPossible() {
+        calculator.addNumber(5)
+        _ = calculator.addOperator(operand: "+")
+        calculator.addNumber(5)
+        _ = calculator.computeExpression()
+
+        let pointAdded = calculator.addPoint()
+
+        XCTAssertFalse(pointAdded)
+    }
+
+    // MARK: - Computing Tests
+    
+    func testGivenExpressionHasOnlyTwoElements_WhenComputing_ThenComputingIsNotPossible() {
         calculator.addNumber(3)
         _ = calculator.addOperator(operand: "+")
 
@@ -79,15 +107,6 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertFalse(result)
     }
 
-    func testGivenExpressionHasNumbersAndOperatorAndIsNotComputed_WhenAddingOperator_ThenAddingOperatorIsPossible() {
-        calculator.addNumber(2)
-        _ = calculator.addOperator(operand: "+")
-        calculator.addNumber(8)
-
-        let operatorAdded = calculator.addOperator(operand: "-")
-
-        XCTAssertTrue(operatorAdded)
-    }
 
     func testGivenExpressionHasAlreadyAResult_WhenComputing_ThenComputingIsPossibleAndResultIsTheSame() {
         calculator.addNumber(5)
@@ -110,6 +129,17 @@ class CalculatorTestCase: XCTestCase {
         let result = calculator.computeExpression()
 
         XCTAssertFalse(result)
+    }
+
+    func testGivenExpressionIsADivision_WhenComputing_ThenResultDisplayedIsRounded() {
+        calculator.addNumber(85)
+        _ = calculator.addOperator(operand: "/")
+        calculator.addNumber(7)
+
+        _ = calculator.computeExpression()
+
+        XCTAssertEqual(calculator.currentExpression, "85 / 7 = 12.14")
+        XCTAssertNotEqual(calculator.currentExpression, "85 / 7 = 12.1428571")
     }
 
     // MARK: - Adding Numbers Tests

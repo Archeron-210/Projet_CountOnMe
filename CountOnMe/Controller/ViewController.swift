@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  SimpleCalc
-//
-//  Created by Vincent Saluzzo on 29/03/2019.
-//  Copyright © 2019 Vincent Saluzzo. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -91,6 +83,7 @@ class ViewController: UIViewController {
 
     @objc private func displayCalculus() {
         textView.text = calculator.currentExpression
+        // automatic scroll down of the textView :
         let range = NSMakeRange(textView.text.count - 1, 0)
         textView.scrollRangeToVisible(range)
     }

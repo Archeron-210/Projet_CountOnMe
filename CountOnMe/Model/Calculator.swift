@@ -1,11 +1,3 @@
-//
-//  Calculator.swift
-//  CountOnMe
-//
-//  Created by Archeron on 30/06/2021.
-//  Copyright © 2021 Vincent Saluzzo. All rights reserved.
-//
-
 import Foundation
 
 class Calculator {
@@ -16,11 +8,11 @@ class Calculator {
         }
     }
 
-    // MARK: - Errors check :
-
     private var elements: [String] {
         return currentExpression.split(separator: " ").map { "\($0)" }
     }
+
+    // MARK: - Errors check :
 
     private var expressionHaveResult: Bool {
         return elements.contains("=")
@@ -35,7 +27,7 @@ class Calculator {
     }
 
     private var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-" && elements.last != "*" && elements.last != "/" && currentExpression.last != "."
+        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && currentExpression.last != "."
     }
 
     // MARK: - Functions
@@ -52,7 +44,7 @@ class Calculator {
     }
 
     func addPoint() -> Bool {
-        guard expressionHaveAtLeastOneNumber && expressionIsCorrect else {
+        guard expressionHaveAtLeastOneNumber, expressionIsCorrect, !expressionHaveResult else {
             return false
         }
         currentExpression.append(".")
@@ -99,7 +91,9 @@ class Calculator {
             return false
         }
 
-        currentExpression.append(" = \(result)")
+        // rounded result to avoid displaying too many numbers :
+        let resultToDisplay = (result * 100).rounded() / 100
+        currentExpression.append(" = \(resultToDisplay)")
 
         return true
     }
@@ -123,11 +117,9 @@ class Calculator {
             guard let index = localElements.firstIndex(where: { $0 == "x" || $0 == "/" }) else {
                 return nil
             }
-
             guard let left = Double(localElements[index-1]) else {
                 return nil
             }
-
             guard let right = Double(localElements[index+1]) else {
                 return nil
             }
@@ -180,11 +172,8 @@ class Calculator {
             default: return nil
             }
 
-            // rounded result to avoid displaying too many numbers :
-            let resultToDisplay = (result * 100).rounded() / 100
-
             localElements = Array(localElements.dropFirst(3))
-            localElements.insert("\(resultToDisplay)", at: 0)
+            localElements.insert("\(result)", at: 0)
         }
 
         guard let firstElement = localElements.first, let result = Double(firstElement) else {
