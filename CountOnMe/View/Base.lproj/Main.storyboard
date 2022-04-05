@@ -20,16 +20,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="N83-WW-GS1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T2H-yn-nBB">
                                 <rect key="frame" x="15" y="59" width="384" height="469.5"/>
-                                <color key="backgroundColor" red="0.24527746819999999" green="0.53481305040000005" blue="0.58749136739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.082395069299999998" green="0.086270891129999999" blue="0.086274690929999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="T2H-yn-nBB" secondAttribute="height" multiplier="1:1" id="5Za-xm-m4s"/>
                                     <constraint firstAttribute="width" constant="200" id="uLC-p4-MlQ">
                                         <variation key="heightClass=compact" constant="250"/>
                                     </constraint>
                                 </constraints>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
@@ -56,7 +59,7 @@
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-av-x4n">
                                                 <rect key="frame" x="0.0" y="0.0" width="105.5" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="1">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +73,7 @@
                                             </button>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-tH-k5u">
                                                 <rect key="frame" x="0.0" y="58" width="105.5" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="4">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,7 +87,7 @@
                                             </button>
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W04-n1-Wen">
                                                 <rect key="frame" x="0.0" y="116" width="105.5" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="7">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,7 +106,7 @@
                                         <subviews>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-ld-hSU">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="2">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -117,7 +120,7 @@
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lad-SR-mqj">
                                                 <rect key="frame" x="0.0" y="58" width="105" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="5">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -131,7 +134,7 @@
                                             </button>
                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPx-3X-zTa">
                                                 <rect key="frame" x="0.0" y="116" width="105" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="8">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,7 +148,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD6-ul-r3f">
                                                 <rect key="frame" x="0.0" y="174" width="105" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +167,7 @@
                                         <subviews>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-zf-T0y">
                                                 <rect key="frame" x="0.0" y="0.0" width="105.5" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="3">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -178,7 +181,7 @@
                                             </button>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S66-ub-JAX">
                                                 <rect key="frame" x="0.0" y="58" width="105.5" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="6">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,7 +195,7 @@
                                             </button>
                                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkr-13-i1X">
                                                 <rect key="frame" x="0.0" y="116" width="105.5" height="44"/>
-                                                <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <state key="normal" title="9">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -226,7 +229,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQU-P5-55X">
                                         <rect key="frame" x="0.0" y="0.0" width="50.5" height="50.5"/>
-                                        <color key="backgroundColor" red="0.46913260919999999" green="0.7149516575" blue="0.62407517239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="DQU-P5-55X" secondAttribute="height" multiplier="1:1" id="NJ6-op-Qbb"/>
                                         </constraints>
@@ -243,7 +246,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zr-HC-0N9">
                                         <rect key="frame" x="55.5" y="0.0" width="50.5" height="50.5"/>
-                                        <color key="backgroundColor" red="0.87294975829999999" green="0.37112226879999999" blue="0.32504552809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.60357517000000005" green="0.57661932709999997" blue="0.56862610579999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                         <state key="normal" title="-">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -257,7 +260,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGs-XI-p5d">
                                         <rect key="frame" x="111" y="0.0" width="50.5" height="50.5"/>
-                                        <color key="backgroundColor" red="0.45676893000000002" green="0.69152683020000005" blue="0.60391342640000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
                                         <state key="normal" title="x">
                                             <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -271,7 +274,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-8W-vRC">
                                         <rect key="frame" x="166.5" y="0.0" width="51" height="50.5"/>
-                                        <color key="backgroundColor" red="0.87115830179999998" green="0.42466861010000001" blue="0.38036558030000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.60357517000000005" green="0.57661932709999997" blue="0.56862610579999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                                         <state key="normal" title="/">
                                             <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -285,7 +288,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7z-0h-tQC">
                                         <rect key="frame" x="222.5" y="0.0" width="50.5" height="50.5"/>
-                                        <color key="backgroundColor" red="0.47250300649999999" green="0.71511632199999997" blue="0.6235208511" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.16470724340000001" green="0.1647033393" blue="0.1647059917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title=".">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -299,7 +302,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39P-uS-MJD">
                                         <rect key="frame" x="278" y="0.0" width="50.5" height="50.5"/>
-                                        <color key="backgroundColor" red="0.94086742400000001" green="0.64837956429999999" blue="0.12516298889999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.2536263466" green="0.53216069939999999" blue="0.58824712040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <state key="normal" title="AC">
                                             <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -313,7 +316,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-Of-bCU">
                                         <rect key="frame" x="333.5" y="0.0" width="50.5" height="50.5"/>
-                                        <color key="backgroundColor" red="0.94643473759999996" green="0.64318747399999998" blue="0.12665354140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.2536263466" green="0.53216069939999999" blue="0.58824712040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                         <state key="normal" title="=">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -329,8 +332,9 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AWJ-Vl-uau"/>
-                        <color key="backgroundColor" red="0.87536688539999996" green="0.84808511389999996" blue="0.83804947389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="N83-WW-GS1" secondAttribute="trailing" id="4A9-ec-144"/>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="T2H-yn-nBB" secondAttribute="leading" id="52y-BR-kwH"/>
                             <constraint firstItem="AWJ-Vl-uau" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" constant="15" id="AfL-4C-V0f"/>
                             <constraint firstItem="T2H-yn-nBB" firstAttribute="top" secondItem="AWJ-Vl-uau" secondAttribute="top" constant="15" id="BBw-A3-oi8"/>
@@ -344,8 +348,10 @@
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" id="ILf-mQ-jlz"/>
                             <constraint firstItem="T2H-yn-nBB" firstAttribute="leading" secondItem="AWJ-Vl-uau" secondAttribute="leading" constant="15" id="Ncy-qj-Ajc"/>
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="bottom" secondItem="T2H-yn-nBB" secondAttribute="bottom" id="TIQ-np-F6X"/>
+                            <constraint firstItem="N83-WW-GS1" firstAttribute="top" secondItem="eIh-hr-C95" secondAttribute="top" id="Wij-x5-qDz"/>
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="trailing" secondItem="T2H-yn-nBB" secondAttribute="trailing" id="YPd-Rh-W6T"/>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="ogr-Aw-e1h" secondAttribute="leading" id="axF-go-ceM"/>
+                            <constraint firstAttribute="bottom" secondItem="N83-WW-GS1" secondAttribute="bottom" id="drg-Xp-qme"/>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="leading" secondItem="T2H-yn-nBB" secondAttribute="trailing" constant="15" id="fDa-pw-kW1"/>
                             <constraint firstItem="isI-Gg-Iye" firstAttribute="top" secondItem="T2H-yn-nBB" secondAttribute="bottom" constant="30" id="gFK-Y8-2MI"/>
                             <constraint firstItem="AWJ-Vl-uau" firstAttribute="bottom" secondItem="ogr-Aw-e1h" secondAttribute="bottom" constant="15" id="hhx-yf-3kH"/>
@@ -354,6 +360,7 @@
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="leading" secondItem="T2H-yn-nBB" secondAttribute="leading" id="ozC-pK-HKL"/>
                             <constraint firstItem="T2H-yn-nBB" firstAttribute="width" secondItem="eIh-hr-C95" secondAttribute="width" multiplier="0.33" id="rte-HD-Lrz"/>
                             <constraint firstItem="AWJ-Vl-uau" firstAttribute="bottom" secondItem="T2H-yn-nBB" secondAttribute="bottom" constant="15" id="wIN-Jf-de3"/>
+                            <constraint firstItem="N83-WW-GS1" firstAttribute="leading" secondItem="eIh-hr-C95" secondAttribute="leading" id="wWb-y9-AbA"/>
                             <constraint firstItem="ogr-Aw-e1h" firstAttribute="centerX" secondItem="T2H-yn-nBB" secondAttribute="centerX" id="zsv-AO-lOC"/>
                         </constraints>
                         <variation key="default">
@@ -412,4 +419,7 @@
             <point key="canvasLocation" x="-976" y="-539"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gradientBackground" width="66.5" height="200"/>
+    </resources>
 </document>
