@@ -6,6 +6,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
+    @IBOutlet var operandButtons: [UIButton]!
 
     // MARK: - Property
 
@@ -15,8 +16,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNumberButtonsAspect()
-        setTextViewAspect()
+        setButtonsAspect(in: numberButtons)
+        setButtonsAspect(in: operandButtons)
+        setAspect(for: textView)
         setTextViewBehavior()
         // Notification :
         let name = Notification.Name("ExpressionDidChange")
@@ -92,24 +94,24 @@ class ViewController: UIViewController {
         textView.scrollRangeToVisible(range)
     }
 
+    // MARK: - UI Aspect
+
     private func setTextViewBehavior() {
         textView.isSelectable = false
         textView.isEditable = false
         textView.isScrollEnabled = true
     }
 
-    private func setTextViewAspect() {
-        textView.layer.cornerRadius = 5
-        textView.layer.borderWidth = 0.5
-        textView.layer.borderColor = UIColor.darkGray.cgColor
+    private func setButtonsAspect(in buttonsArray: [UIButton]) {
+        for button in buttonsArray {
+            setAspect(for: button)
+        }
     }
 
-    private func setNumberButtonsAspect() {
-        for button in numberButtons {
-            button.layer.cornerRadius = 5
-            button.layer.borderWidth = 0.5
-            button.layer.borderColor = UIColor.darkGray.cgColor
-        }
+    private func setAspect(for viewElement: UIView) {
+        viewElement.layer.cornerRadius = 5
+        viewElement.layer.borderWidth = 0.5
+        viewElement.layer.borderColor = UIColor.darkGray.cgColor
     }
 
     // MARK: - Alert

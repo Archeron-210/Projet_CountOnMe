@@ -412,6 +412,13 @@
                         <outletCollection property="numberButtons" destination="W04-n1-Wen" collectionClass="NSMutableArray" id="F9G-eA-4ij"/>
                         <outletCollection property="numberButtons" destination="EPx-3X-zTa" collectionClass="NSMutableArray" id="tmM-9D-IHt"/>
                         <outletCollection property="numberButtons" destination="Hkr-13-i1X" collectionClass="NSMutableArray" id="Cn1-3U-qap"/>
+                        <outletCollection property="operandButtons" destination="DQU-P5-55X" collectionClass="NSMutableArray" id="0vG-Uj-kKw"/>
+                        <outletCollection property="operandButtons" destination="3zr-HC-0N9" collectionClass="NSMutableArray" id="GBy-oM-zgZ"/>
+                        <outletCollection property="operandButtons" destination="aGs-XI-p5d" collectionClass="NSMutableArray" id="ohK-53-78x"/>
+                        <outletCollection property="operandButtons" destination="Q7z-0h-tQC" collectionClass="NSMutableArray" id="dsk-ud-2Og"/>
+                        <outletCollection property="operandButtons" destination="JuO-8W-vRC" collectionClass="NSMutableArray" id="tdY-dV-ou6"/>
+                        <outletCollection property="operandButtons" destination="39P-uS-MJD" collectionClass="NSMutableArray" id="2c9-GC-n3y"/>
+                        <outletCollection property="operandButtons" destination="qMj-Of-bCU" collectionClass="NSMutableArray" id="jum-W5-Ry2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XP-3c-sJZ" sceneMemberID="firstResponder"/>
