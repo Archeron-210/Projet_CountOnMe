@@ -2,6 +2,8 @@ import Foundation
 
 class Calculator {
 
+    // MARK: - Properties
+
     private(set) var currentExpression: String = "" {
         didSet {
             sendCurrentExpressionDidChangeNotification()
@@ -12,7 +14,7 @@ class Calculator {
         return currentExpression.split(separator: " ").map { "\($0)" }
     }
 
-    // MARK: - Errors check :
+    // MARK: - Errors check properties
 
     private var expressionHaveResult: Bool {
         return elements.contains("=")
@@ -104,7 +106,7 @@ class Calculator {
         NotificationCenter.default.post(notification)
     }
 
-    // MARK: - Calculations functions
+    // MARK: - Calculus functions
 
     // reduce operations wich contains multiplications or divisions :
     private func reducePriorityOperations(_ elements: [String]) -> [String]? {

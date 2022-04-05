@@ -1,27 +1,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let calculator = Calculator()
 
-    //MARK:- Outlets
+    // MARK: - Outlets
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
+
+    // MARK: - Property
+
+    let calculator = Calculator()
     
-    //MARK:- View Lifecycles
+    // MARK: -  Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.isSelectable = false
-        textView.isEditable = false
-        textView.isScrollEnabled = true
+        setTextViewAspect()
+        setTextViewBehavior()
         // Notification :
         let name = Notification.Name("ExpressionDidChange")
         NotificationCenter.default.addObserver(self, selector: #selector(displayCalculus), name: name, object: nil)
     }
     
     
-    //MARK:- Actions
+    // MARK: - Actions
+
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         calculator.addNumber(sender.tag)
     }
@@ -79,7 +82,7 @@ class ViewController: UIViewController {
         calculator.resetExpression()
     }
 
-    //MARK:- Private Functions
+    // MARK: - Private
 
     @objc private func displayCalculus() {
         textView.text = calculator.currentExpression
@@ -88,8 +91,22 @@ class ViewController: UIViewController {
         textView.scrollRangeToVisible(range)
     }
 
+    private func setTextViewBehavior() {
+        textView.isSelectable = false
+        textView.isEditable = false
+        textView.isScrollEnabled = true
+    }
+
+    private func setTextViewAspect() {
+        textView.layer.cornerRadius = 5
+        textView.layer.borderWidth = 0.5
+        textView.layer.borderColor = UIColor.darkGray.cgColor
+    }
+
+    // MARK: - Alert
+
     private func incorrectExpressionAlert() {
-        let alertVC = UIAlertController(title: "Erreur !", message: "Entrez une expression correcte", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "✕", message: "Please enter valid expression", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return self.present(alertVC, animated: true, completion: nil)
     }
