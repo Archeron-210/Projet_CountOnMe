@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNumberButtonsAspect()
         setTextViewAspect()
         setTextViewBehavior()
         // Notification :
@@ -101,6 +102,14 @@ class ViewController: UIViewController {
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 0.5
         textView.layer.borderColor = UIColor.darkGray.cgColor
+    }
+
+    private func setNumberButtonsAspect() {
+        for button in numberButtons {
+            button.layer.cornerRadius = 5
+            button.layer.borderWidth = 0.5
+            button.layer.borderColor = UIColor.darkGray.cgColor
+        }
     }
 
     // MARK: - Alert
